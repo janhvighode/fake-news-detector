@@ -1,26 +1,50 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
+
 <head>
-<title>Fake News Detector</title>
-<link rel="stylesheet" href="/static/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>AI Fake News Detection</title>
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
+<nav>
+<a href="index.html">Home</a>
+<a href="detector.html">Detector</a>
+<a href="about.html">About AI</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<div class="container">
+
 <h1>AI Fake News Detection</h1>
 
-<form action="/predict" method="post">
+<p>
+Welcome to the AI Fake News Detection system. This project demonstrates how
+Artificial Intelligence can help detect misinformation in online news articles.
+</p>
 
-<textarea name="news" placeholder="Paste news text here..." required></textarea>
+<p>
+The system analyzes the news content using Natural Language Processing (NLP)
+techniques and estimates whether the news is likely to be real or fake.
+</p>
 
-<br>
+<p>
+Fake news spreads rapidly on social media and can influence public opinion.
+AI-based fake news detection systems help reduce misinformation by identifying
+suspicious news content and providing a trust score.
+</p>
 
-<button type="submit">Detect News</button>
+<a class="btn" href="detector.html">Try the Fake News Detector</a>
 
-</form>
-
-<h2>{{ prediction_text }}</h2>
-<h3>Trust Score: {{ trust_score }}</h3>
+</div>
 
 </body>
+
 </html>
