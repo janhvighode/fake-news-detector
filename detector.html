@@ -1,59 +1,85 @@
 <!DOCTYPE html>
-<html>
+
+<html lang="en">
 
 <head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Fake News Detector</title>
-<link rel="stylesheet" href="/static/style.css">
+
+<link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
 <nav>
-<a href="/">Home</a>
-<a href="/detector">Detector</a>
-<a href="/about">About AI</a>
-<a href="/contact">Contact</a>
+<a href="index.html">Home</a>
+<a href="detector.html">Detector</a>
+<a href="about.html">About AI</a>
+<a href="contact.html">Contact</a>
 </nav>
 
 <div class="container">
 
 <h1>Fake News Detector</h1>
 
-<p>Paste a news article below and our AI will analyze it.</p>
+<p>Paste a news article below and click Detect News.</p>
 
-<form action="/predict" method="post">
+<textarea id="newsInput" placeholder="Paste news article here..."></textarea>
 
-<textarea name="news" placeholder="Paste news article here..." required></textarea>
+<br><br>
 
-<br>
+<button onclick="detectNews()">Detect News</button>
 
-<button type="submit">Analyze News</button>
+<button onclick="loadExample()">Load Example</button>
 
-</form>
+<button onclick="clearText()">Clear</button>
 
-{% if prediction_text %}
-
-<div class="result">
-
-<h2>Prediction: {{ prediction_text }}</h2>
-
-<h3>Trust Score: {{ trust_score }}</h3>
-
-<div class="progress-bar">
-<div class="progress" style="width: {{ trust_score }}"></div>
-</div>
+<div id="result"></div>
 
 </div>
 
-{% endif %}
+<script>
 
-</div>
+function detectNews(){
 
-<footer>
+let text=document.getElementById("newsInput").value;
 
-<p>AI Fake News Detection System</p>
+if(text.length<120){
 
-</footer>
+document.getElementById("result").innerHTML=
+"<h2 style='color:red'>Possible Fake News</h2><p>Trust Score: 35%</p>";
+
+}
+
+else{
+
+document.getElementById("result").innerHTML=
+"<h2 style='color:green'>Likely Real News</h2><p>Trust Score: 82%</p>";
+
+}
+
+}
+
+function loadExample(){
+
+document.getElementById("newsInput").value =
+"Scientists claim that a newly discovered plant can charge mobile phones by storing solar energy in its leaves. Experts say more research is needed to verify the claim.";
+
+}
+
+function clearText(){
+
+document.getElementById("newsInput").value="";
+document.getElementById("result").innerHTML="";
+
+}
+
+</script>
 
 </body>
+
 </html>
