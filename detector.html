@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Fake News Detector</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<nav>
+<a href="/">Home</a>
+<a href="/detector">Detector</a>
+<a href="/about">About AI</a>
+<a href="/contact">Contact</a>
+</nav>
+
+<div class="container">
+
+<h1>Fake News Detector</h1>
+
+<p>Paste a news article below and our AI will analyze it.</p>
+
+<form action="/predict" method="post">
+
+<textarea name="news" placeholder="Paste news article here..." required></textarea>
+
+<br>
+
+<button type="submit">Analyze News</button>
+
+</form>
+
+{% if prediction_text %}
+
+<div class="result">
+
+<h2>Prediction: {{ prediction_text }}</h2>
+
+<h3>Trust Score: {{ trust_score }}</h3>
+
+<div class="progress-bar">
+<div class="progress" style="width: {{ trust_score }}"></div>
+</div>
+
+</div>
+
+{% endif %}
+
+</div>
+
+<footer>
+
+<p>AI Fake News Detection System</p>
+
+</footer>
+
+</body>
+</html>
